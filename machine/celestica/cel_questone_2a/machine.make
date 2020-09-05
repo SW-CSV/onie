@@ -33,7 +33,8 @@ I2CTOOLS_SYSEEPROM = no
 #PARTITION_TYPE = gpt
 
 # Set Linux kernel version
-LINUX_VERSION           = 4.9.95
+LINUX_VERSION       = 4.9
+LINUX_MINOR_VERSION	= 95
 
 # Older GCC required for older 3.2 kernel
 # GCC_VERSION = 4.9.2
