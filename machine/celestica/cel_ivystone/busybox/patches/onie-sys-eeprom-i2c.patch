@@ -1,0 +1,60 @@
+Add system eeprom i2c read and write
+
+diff --git a/miscutils/sys_eeprom_i2c.c b/miscutils/sys_eeprom_i2c.c
+index ed3235b..a8d3836 100644
+--- a/miscutils/sys_eeprom_i2c.c
++++ b/miscutils/sys_eeprom_i2c.c
+@@ -23,11 +23,20 @@ int read_sys_eeprom(void *eeprom_data, int offset, int len)
+     int addr = SYS_EEPROM_OFFSET + offset;
+ 
+     c = eeprom_data;
+-    if (eeprom_open(SYS_EEPROM_I2C_DEVICE, SYS_EEPROM_I2C_ADDR,
+-		    EEPROM_TYPE, &e)) {
+-	printf("ERROR: Cannot open I2C device\n");
+-	return -1;
++#if 0
++     if (eeprom_open(SYS_EEPROM_I2C_DEVICE, SYS_EEPROM_I2C_ADDR,
++                    EEPROM_TYPE, &e)) {
++        printf("ERROR: Cannot open I2C device\n");
++        return -1;
++     }
++#else
++    if(eeprom_open("/dev/i2c-0", 0x56,
++                    2, &e)) {
++        printf("ERROR: Cannot open I2C device\n");
++        return -1;
+     }
++#endif
++
+     for (i = 0; i < len; i++) {
+ 	*c = eeprom_read_byte(&e, addr);
+ 	c++; addr++;
+@@ -49,12 +58,23 @@ int write_sys_eeprom(void *eeprom_data, int len)
+ 
+     c = eeprom_data;
+     for (i = 0; i < len; i++) {
+-	if (eeprom_open(SYS_EEPROM_I2C_DEVICE, SYS_EEPROM_I2C_ADDR,
+-			EEPROM_TYPE, &e)) {
+-	    printf("ERROR: Cannot open I2C device\n");
+-	    return -1;
+-	}
++#if 0
++        if (eeprom_open(SYS_EEPROM_I2C_DEVICE, SYS_EEPROM_I2C_ADDR,
++                        EEPROM_TYPE, &e)) {
++            printf("ERROR: Cannot open I2C device\n");
++            return -1;
++        }
++#else
++        if (eeprom_open("/dev/i2c-0", 0x56,
++                        2, &e)) {
++            printf("ERROR: Cannot open I2C device\n");
++            return -1;
++        }
++
++#endif
++
+ 	eeprom_write_byte(&e, addr, *c);
++        usleep(50000);//1000000 no NAK
+ 	eeprom_close(&e);
+ 	c++; addr++;
+     }
