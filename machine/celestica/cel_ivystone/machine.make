@@ -5,7 +5,7 @@ SWITCH_ASIC_VENDOR = bcm
 
 VENDOR_REV ?= 0
 
-#CONSOLE_SPEED = 9600
+CONSOLE_SPEED = 115200
 # Translate hardware revision to ONIE hardware revision
 ifeq ($(VENDOR_REV),0)
   MACHINE_REV = 0
