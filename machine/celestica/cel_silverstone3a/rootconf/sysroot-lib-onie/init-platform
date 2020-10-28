@@ -14,7 +14,7 @@
 # This function executes after the architecture initializations. 
 init_platform_post_arch() 
 { 
-    echo "Running Celestica Silverstone 2 platform init routines..." 
+    echo "Running Celestica Silverstone 3a platform init routines..." 
 	#Get Current LED Mode
 	mode=`ipmitool raw 0x3a 0x9 0x1`
 	if [ $mode == 01 ]; then

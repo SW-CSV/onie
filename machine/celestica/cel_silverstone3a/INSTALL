@@ -1,23 +1,23 @@
 ================================================================================
-Installing ONIE on CELESTICA Redstone_v 
+Installing ONIE on CELESTICA Silverstone 3a 
 ================================================================================
 
 Cross-Compiling ONIE
 ====================
 
 To compile ONIE first change directories to ``build-config`` and then
-type ``"make MACHINEROOT=../machine/celestica MACHINE=cel_redstone_v all"``.  For example::
+type ``"make MACHINEROOT=../machine/celestica MACHINE=cel_silverstone3a all"``.  For example::
 
   $ cd build-config
-  $ make -j4 MACHINEROOT=../machine/celestica MACHINE=cel_redstone_v all
+  $ make -j4 MACHINEROOT=../machine/celestica MACHINE=cel_silverstone3a all
 
 When complete, the ONIE binaries are located in
 ``build/images``::
 
--rw-r--r--  5297280 Jun  9 15:23 cel_redstone_v-r0.initrd
--rw-r--r--  3285344 Jun  1 16:33 cel_redstone_v-r0.vmlinuz
--rw-r--r-- 17825792 Jun  1 17:54 onie-recovery-x86_64-cel_redstone_v-r0.iso
--rw-r--r--  8603253 Jun  4 11:27 onie-updater-x86_64-cel_redstone_v-r0
+-rw-r--r--  5297280 Jun  9 15:23 cel_silverstone3a-r0.initrd
+-rw-r--r--  3285344 Jun  1 16:33 cel_silverstone3a-r0.vmlinuz
+-rw-r--r-- 17825792 Jun  1 17:54 onie-recovery-x86_64-cel_silverstone3a-r0.iso
+-rw-r--r--  8603253 Jun  4 11:27 onie-updater-x86_64-cel_silverstone3a-r0
 
 Installing ONIE on a Blank Machine
 ==================================
@@ -55,7 +55,7 @@ To enable booting from USB in the BIOS:
 
 1. Insert the USB stick (needs to be in before configuring BIOS)
 
-2. Power on the Redstone_v and enter the BIOS configuration
+2. Power on the Silverstone 3a and enter the BIOS configuration
 
 3. Set the USB device to "Hard Disk"::
 
